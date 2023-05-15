@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tilt Ball</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+    
+    #ball {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="ball"></div>
+
+  <script>
+    window.addEventListener("deviceorientation", handleOrientation, true);
+
+    function handleOrientation(event) {
+      var x = event.beta;  // 기울기 X
+      var y = event.gamma; // 기울기 Y
+
+      var ball = document.getElementById("ball");
+      ball.style.top = (50 + y) + "%";
+      ball.style.left = (50 + x) + "%";
+    }
+  </script>
+</body>
+</html>
